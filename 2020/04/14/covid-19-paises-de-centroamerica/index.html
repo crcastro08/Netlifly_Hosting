@@ -22,6 +22,11 @@
 
 
 
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
 <link rel="stylesheet" href="/css/fonts.css" media="all">
 <link rel="stylesheet" href="/css/main.css" media="all">
 
@@ -70,8 +75,32 @@
       
 
 
-<p>Esta es una gráfica que muestra la evolución de caso de Covid-19 en los países de Centroamérica. Muestra la tasa de contagios y el pronóstico de en cuantos días se podría doblar el número de caso.
+<p>Esta es una gráfica que muestra la evolución de los casos de Covid-19 en los países de Centroamérica. Muestra la tasa de contagios y el pronóstico de en cuantos días se podría doblar el número de caso.
 Para más detalle cómo se tiene la información ver: <a href="https://robjhyndman.com/hyndsight/logratios-covid19/" class="uri">https://robjhyndman.com/hyndsight/logratios-covid19/</a></p>
+<pre class="r"><code>covid19_dta &lt;- download_merged_data(silent = TRUE, cached = TRUE)
+
+#countries &lt;- c(&quot;AUS&quot;, &quot;BRA&quot;, &quot;ITA&quot;, &quot;ESP&quot;, &quot;USA&quot;,&quot;GBR&quot;)
+countries &lt;- c(&quot;CRI&quot;, &quot;HND&quot;, &quot;GTM&quot;, &quot;SLV&quot;, &quot;PAN&quot;)</code></pre>
+<pre class="r"><code>covid19_dta %&gt;%
+  mutate(
+    cases_logratio = difference(log(confirmed))
+  ) %&gt;%
+  filter(iso3c %in% countries) %&gt;%
+  filter(date &gt;= as.Date(&quot;2020-03-15&quot;)) %&gt;%
+  ggplot(aes(x = date, y = cases_logratio, col = country)) +
+   labs(title = &quot;Comportamiento de Casos Covid-19 paises de Centroamerica&quot;,
+       caption = &quot;Fuente Datos: Johns Hopkins University Center for Systems Science and Engineering. Se uso R para generar la grafica&quot;)+
+  geom_hline(yintercept = log(2)/c(2:7,14,21), col=&#39;grey&#39;) +
+  geom_smooth(method = &quot;loess&quot;, se = FALSE) +
+  scale_y_continuous(
+    &quot;Incremento diario de casos&quot;,
+    breaks = log(1+seq(0,60,by=10)/100),
+    labels = paste0(seq(0,60,by=10),&quot;%&quot;),
+    minor_breaks=NULL,
+    sec.axis = sec_axis(~ log(2)/(.),
+                        breaks = c(2:7,14,21),
+                        name = &quot;Dias para doblar casos&quot;)
+  )</code></pre>
 <p><img src="/post/covid_19_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 
     </div>
@@ -95,6 +124,18 @@ Para más detalle cómo se tiene la información ver: <a href="https://robjhyndm
 
     </div>
     
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
 
     
 

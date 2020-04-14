@@ -17,7 +17,8 @@
       <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/2020/04/14/covid-19-paises-de-centroamerica/</guid>
-      <description>Esta es una gráfica que muestra la evolución de caso de Covid-19 en los países de Centroamérica. Muestra la tasa de contagios y el pronóstico de en cuantos días se podría doblar el número de caso.Para más detalle cómo se tiene la información ver: https://robjhyndman.com/hyndsight/logratios-covid19/</description>
+      <description>Esta es una gráfica que muestra la evolución de los casos de Covid-19 en los países de Centroamérica. Muestra la tasa de contagios y el pronóstico de en cuantos días se podría doblar el número de caso.Para más detalle cómo se tiene la información ver: https://robjhyndman.com/hyndsight/logratios-covid19/
+covid19_dta &amp;lt;- download_merged_data(silent = TRUE, cached = TRUE)#countries &amp;lt;- c(&amp;quot;AUS&amp;quot;, &amp;quot;BRA&amp;quot;, &amp;quot;ITA&amp;quot;, &amp;quot;ESP&amp;quot;, &amp;quot;USA&amp;quot;,&amp;quot;GBR&amp;quot;)countries &amp;lt;- c(&amp;quot;CRI&amp;quot;, &amp;quot;HND&amp;quot;, &amp;quot;GTM&amp;quot;, &amp;quot;SLV&amp;quot;, &amp;quot;PAN&amp;quot;)covid19_dta %&amp;gt;%mutate(cases_logratio = difference(log(confirmed))) %&amp;gt;%filter(iso3c %in% countries) %&amp;gt;%filter(date &amp;gt;= as.</description>
     </item>
     
   </channel>
