@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Carlos Web Site</title>
+    <link>/</link>
+    <description>Recent content on Carlos Web Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 May 2016 21:48:51 -0700</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Covid-19 Paises de Centroamerica</title>
+      <link>/2020/04/14/covid-19-paises-de-centroamerica/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/04/14/covid-19-paises-de-centroamerica/</guid>
+      <description>Esta es una gráfica que muestra la evolución de caso de Covid-19 en los países de Centroamérica. Muestra la tasa de contagios y el pronóstico de en cuantos días se podría doblar el número de caso.Para más detalle cómo se tiene la información ver: https://robjhyndman.com/hyndsight/logratios-covid19/</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Este es un website con informacion generada utilizando el software R y RStudio.(https://rstudio.com/) Carlos Castro crcastro.e@gmail.com</description>
+    </item>
+    
+  </channel>
+</rss>
